@@ -6,11 +6,11 @@
 
 namespace bsp
 {
-	class GpioPinPE5
+	class GpioPinPG12
 		: public bsp::GpioPin
 	{
 	private:
-		GpioPinPE5() = default;
+		GpioPinPG12() = default;
 
 		bool _is_open = false;
 
@@ -21,9 +21,9 @@ namespace bsp
 			};
 
 	public:
-		static GpioPinPE5 &Instance()
+		static GpioPinPG12 &Instance()
 		{
-			static GpioPinPE5 o;
+			static GpioPinPG12 o;
 			return o;
 		}
 

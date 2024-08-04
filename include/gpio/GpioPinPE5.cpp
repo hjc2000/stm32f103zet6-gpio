@@ -12,6 +12,11 @@ uint32_t bsp::GpioPinPE5::Pin()
 	return GPIO_PIN_5;
 }
 
+std::string bsp::GpioPinPE5::PinName() const
+{
+	return "PE5";
+}
+
 void bsp::GpioPinPE5::Open(bsp::IGpioPinOptions const &options)
 {
 	if (_is_open)
