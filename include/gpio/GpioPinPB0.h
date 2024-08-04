@@ -7,11 +7,11 @@
 namespace bsp
 {
 	/// @brief PB5 引脚。
-	class GpioPinPB5
+	class GpioPinPB0
 		: public bsp::GpioPin
 	{
 	private:
-		GpioPinPB5() = default;
+		GpioPinPB0() = default;
 
 		bool _is_open = false;
 
@@ -22,9 +22,9 @@ namespace bsp
 			};
 
 	public:
-		static GpioPinPB5 &Instance()
+		static GpioPinPB0 &Instance()
 		{
-			static GpioPinPB5 o;
+			static GpioPinPB0 o;
 			return o;
 		}
 

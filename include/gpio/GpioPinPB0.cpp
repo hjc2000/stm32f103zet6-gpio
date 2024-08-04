@@ -1,23 +1,23 @@
-#include "GpioPinPB5.h"
+#include "GpioPinPB0.h"
 #include <gpio/GpioPinOptions.h>
 #include <hal.h>
 
-GPIO_TypeDef *bsp::GpioPinPB5::Port()
+GPIO_TypeDef *bsp::GpioPinPB0::Port()
 {
 	return GPIOB;
 }
 
-uint32_t bsp::GpioPinPB5::Pin()
+uint32_t bsp::GpioPinPB0::Pin()
 {
-	return GPIO_PIN_5;
+	return GPIO_PIN_0;
 }
 
-std::string bsp::GpioPinPB5::PinName() const
+std::string bsp::GpioPinPB0::PinName() const
 {
-	return "PB5";
+	return "PB0";
 }
 
-void bsp::GpioPinPB5::Open(bsp::IGpioPinOptions const &options)
+void bsp::GpioPinPB0::Open(bsp::IGpioPinOptions const &options)
 {
 	if (_is_open)
 	{
@@ -32,7 +32,7 @@ void bsp::GpioPinPB5::Open(bsp::IGpioPinOptions const &options)
 	HAL_GPIO_Init(Port(), &init);
 }
 
-void bsp::GpioPinPB5::Close()
+void bsp::GpioPinPB0::Close()
 {
 	if (!_is_open)
 	{
