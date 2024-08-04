@@ -1,6 +1,7 @@
 #include "GpioPinOptions.h"
 #include <stdexcept>
 
+#pragma region 初始化为各种模式
 void bsp::GpioPinOptions::InitAsGpioMode(GPIO_InitTypeDef &o) const
 {
 	switch (Direction())
@@ -134,6 +135,7 @@ void bsp::GpioPinOptions::InitAsAnalogMode(GPIO_InitTypeDef &o) const
 {
 	o.Mode = GPIO_MODE_ANALOG;
 }
+#pragma endregion
 
 bsp::GpioPinOptions::operator GPIO_InitTypeDef() const
 {
