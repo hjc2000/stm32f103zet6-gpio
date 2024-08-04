@@ -1,13 +1,6 @@
 #include "GpioPinPB5.h"
-#include <base/Initializer.h>
 #include <gpio/GpioPinOptions.h>
 #include <hal.h>
-
-static base::Initializer _init{
-	[]()
-	{
-		bsp::GpioPinPB5::Instance();
-	}};
 
 GPIO_TypeDef *bsp::GpioPinPB5::Port()
 {

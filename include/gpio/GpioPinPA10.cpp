@@ -1,13 +1,6 @@
 #include "GpioPinPA10.h"
-#include <base/Initializer.h>
 #include <gpio/GpioPinOptions.h>
 #include <hal.h>
-
-static base::Initializer _init{
-	[]()
-	{
-		bsp::GpioPinPA10::Instance();
-	}};
 
 GPIO_TypeDef *bsp::GpioPinPA10::Port()
 {

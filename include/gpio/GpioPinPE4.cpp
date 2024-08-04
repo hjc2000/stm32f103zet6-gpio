@@ -1,13 +1,6 @@
 #include "GpioPinPE4.h"
-#include <base/Initializer.h>
 #include <gpio/GpioPinOptions.h>
 #include <hal.h>
-
-static base::Initializer _init{
-	[]()
-	{
-		bsp::GpioPinPE4::Instance();
-	}};
 
 GPIO_TypeDef *bsp::GpioPinPE4::Port()
 {

@@ -1,13 +1,6 @@
 #include "GpioPinPE3.h"
-#include <base/Initializer.h>
 #include <gpio/GpioPinOptions.h>
 #include <hal.h>
-
-static base::Initializer _init{
-	[]()
-	{
-		bsp::GpioPinPE3::Instance();
-	}};
 
 GPIO_TypeDef *bsp::GpioPinPE3::Port()
 {
