@@ -2,7 +2,7 @@
 #include <bsp-interface/gpio/IGpioPinOptions.h>
 #include <hal.h>
 
-namespace hal
+namespace bsp
 {
 	class GpioPinOptions
 		: public bsp::IGpioPinOptions

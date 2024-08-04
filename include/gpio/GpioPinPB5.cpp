@@ -6,20 +6,20 @@
 static base::Initializer _init{
 	[]()
 	{
-		hal::GpioPinPB5::Instance();
+		bsp::GpioPinPB5::Instance();
 	}};
 
-GPIO_TypeDef *hal::GpioPinPB5::Port()
+GPIO_TypeDef *bsp::GpioPinPB5::Port()
 {
 	return GPIOB;
 }
 
-uint32_t hal::GpioPinPB5::Pin()
+uint32_t bsp::GpioPinPB5::Pin()
 {
 	return GPIO_PIN_5;
 }
 
-void hal::GpioPinPB5::Open(bsp::IGpioPinOptions const &options)
+void bsp::GpioPinPB5::Open(bsp::IGpioPinOptions const &options)
 {
 	if (_is_open)
 	{
@@ -29,12 +29,12 @@ void hal::GpioPinPB5::Open(bsp::IGpioPinOptions const &options)
 	_is_open = true;
 
 	__HAL_RCC_GPIOB_CLK_ENABLE();
-	GPIO_InitTypeDef init = static_cast<hal::GpioPinOptions const &>(options);
+	GPIO_InitTypeDef init = static_cast<bsp::GpioPinOptions const &>(options);
 	init.Pin = Pin();
 	HAL_GPIO_Init(Port(), &init);
 }
 
-void hal::GpioPinPB5::Close()
+void bsp::GpioPinPB5::Close()
 {
 	if (!_is_open)
 	{

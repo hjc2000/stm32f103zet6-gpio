@@ -2,7 +2,7 @@
 #include <bsp-interface/di.h>
 #include <hal.h>
 
-namespace hal
+namespace bsp
 {
 	class GpioPin
 		: public bsp::IGpioPin

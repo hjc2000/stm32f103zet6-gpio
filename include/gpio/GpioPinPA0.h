@@ -4,11 +4,11 @@
 #include <base/container/StdContainerEnumerable.h>
 #include <gpio/GpioPin.h>
 
-namespace hal
+namespace bsp
 {
 	/// @brief PB5 引脚。
 	class GpioPinPA0
-		: public hal::GpioPin
+		: public bsp::GpioPin
 	{
 	private:
 		GpioPinPA0() = default;

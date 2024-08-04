@@ -1,7 +1,7 @@
 #include "GpioPinOptions.h"
 #include <stdexcept>
 
-void hal::GpioPinOptions::InitAsGpioMode(GPIO_InitTypeDef &o) const
+void bsp::GpioPinOptions::InitAsGpioMode(GPIO_InitTypeDef &o) const
 {
 	switch (Direction())
 	{
@@ -66,7 +66,7 @@ void hal::GpioPinOptions::InitAsGpioMode(GPIO_InitTypeDef &o) const
 	}
 }
 
-void hal::GpioPinOptions::InitAsAlternateFunctionMode(GPIO_InitTypeDef &o) const
+void bsp::GpioPinOptions::InitAsAlternateFunctionMode(GPIO_InitTypeDef &o) const
 {
 	switch (Direction())
 	{
@@ -104,7 +104,7 @@ void hal::GpioPinOptions::InitAsAlternateFunctionMode(GPIO_InitTypeDef &o) const
 	}
 }
 
-void hal::GpioPinOptions::InitAsEventMode(GPIO_InitTypeDef &o) const
+void bsp::GpioPinOptions::InitAsEventMode(GPIO_InitTypeDef &o) const
 {
 	switch (TriggerEdge())
 	{
@@ -130,12 +130,12 @@ void hal::GpioPinOptions::InitAsEventMode(GPIO_InitTypeDef &o) const
 	}
 }
 
-void hal::GpioPinOptions::InitAsAnalogMode(GPIO_InitTypeDef &o) const
+void bsp::GpioPinOptions::InitAsAnalogMode(GPIO_InitTypeDef &o) const
 {
 	o.Mode = GPIO_MODE_ANALOG;
 }
 
-hal::GpioPinOptions::operator GPIO_InitTypeDef() const
+bsp::GpioPinOptions::operator GPIO_InitTypeDef() const
 {
 	GPIO_InitTypeDef o = _hal_gpio_init;
 	switch (WorkMode())
@@ -170,37 +170,37 @@ hal::GpioPinOptions::operator GPIO_InitTypeDef() const
 }
 
 #pragma region IGpioPinOptions
-bsp::IGpioPinDirection hal::GpioPinOptions::Direction() const
+bsp::IGpioPinDirection bsp::GpioPinOptions::Direction() const
 {
 	return _direction;
 }
 
-void hal::GpioPinOptions::SetDirection(bsp::IGpioPinDirection value)
+void bsp::GpioPinOptions::SetDirection(bsp::IGpioPinDirection value)
 {
 	_direction = value;
 }
 
-bsp::IGpioPinWorkMode hal::GpioPinOptions::WorkMode() const
+bsp::IGpioPinWorkMode bsp::GpioPinOptions::WorkMode() const
 {
 	return _work_mode;
 }
 
-void hal::GpioPinOptions::SetWorkMode(bsp::IGpioPinWorkMode value)
+void bsp::GpioPinOptions::SetWorkMode(bsp::IGpioPinWorkMode value)
 {
 	_work_mode = value;
 }
 
-bsp::IGpioPinTriggerEdge hal::GpioPinOptions::TriggerEdge() const
+bsp::IGpioPinTriggerEdge bsp::GpioPinOptions::TriggerEdge() const
 {
 	return _trigger_edge;
 }
 
-void hal::GpioPinOptions::SetTriggerEdge(bsp::IGpioPinTriggerEdge value)
+void bsp::GpioPinOptions::SetTriggerEdge(bsp::IGpioPinTriggerEdge value)
 {
 	_trigger_edge = value;
 }
 
-bsp::IGpioPinPullMode hal::GpioPinOptions::PullMode() const
+bsp::IGpioPinPullMode bsp::GpioPinOptions::PullMode() const
 {
 	switch (_hal_gpio_init.Pull)
 	{
@@ -220,7 +220,7 @@ bsp::IGpioPinPullMode hal::GpioPinOptions::PullMode() const
 	}
 }
 
-void hal::GpioPinOptions::SetPullMode(bsp::IGpioPinPullMode value)
+void bsp::GpioPinOptions::SetPullMode(bsp::IGpioPinPullMode value)
 {
 	switch (value)
 	{
@@ -243,17 +243,17 @@ void hal::GpioPinOptions::SetPullMode(bsp::IGpioPinPullMode value)
 	}
 }
 
-bsp::IGpioPinDriver hal::GpioPinOptions::Driver() const
+bsp::IGpioPinDriver bsp::GpioPinOptions::Driver() const
 {
 	return _driver;
 }
 
-void hal::GpioPinOptions::SetDriver(bsp::IGpioPinDriver value)
+void bsp::GpioPinOptions::SetDriver(bsp::IGpioPinDriver value)
 {
 	_driver = value;
 }
 
-int hal::GpioPinOptions::SpeedLevel() const
+int bsp::GpioPinOptions::SpeedLevel() const
 {
 	switch (_hal_gpio_init.Speed)
 	{
@@ -273,7 +273,7 @@ int hal::GpioPinOptions::SpeedLevel() const
 	}
 }
 
-void hal::GpioPinOptions::SetSpeedLevel(int value)
+void bsp::GpioPinOptions::SetSpeedLevel(int value)
 {
 	switch (value)
 	{
@@ -296,12 +296,12 @@ void hal::GpioPinOptions::SetSpeedLevel(int value)
 	}
 }
 
-std::string hal::GpioPinOptions::AlternateFunction() const
+std::string bsp::GpioPinOptions::AlternateFunction() const
 {
 	return _af_mode;
 }
 
-void hal::GpioPinOptions::SetAlternateFunction(std::string value)
+void bsp::GpioPinOptions::SetAlternateFunction(std::string value)
 {
 	_af_mode = value;
 }
