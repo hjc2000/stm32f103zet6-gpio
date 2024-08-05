@@ -16,6 +16,8 @@
 #include <gpio/PD/GpioPinPD1.h>
 #include <gpio/PD/GpioPinPD10.h>
 #include <gpio/PD/GpioPinPD11.h>
+#include <gpio/PD/GpioPinPD14.h>
+#include <gpio/PD/GpioPinPD15.h>
 #include <gpio/PD/GpioPinPD4.h>
 #include <gpio/PD/GpioPinPD5.h>
 #include <gpio/PD/GpioPinPD8.h>
