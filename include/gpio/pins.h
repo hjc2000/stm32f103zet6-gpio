@@ -14,8 +14,12 @@
 #pragma region PD
 #include <gpio/PD/GpioPinPD0.h>
 #include <gpio/PD/GpioPinPD1.h>
+#include <gpio/PD/GpioPinPD10.h>
+#include <gpio/PD/GpioPinPD11.h>
 #include <gpio/PD/GpioPinPD4.h>
 #include <gpio/PD/GpioPinPD5.h>
+#include <gpio/PD/GpioPinPD8.h>
+#include <gpio/PD/GpioPinPD9.h>
 #pragma endregion
 
 #pragma region PE
