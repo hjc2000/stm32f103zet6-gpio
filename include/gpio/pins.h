@@ -28,6 +28,9 @@
 #include <gpio/PE/GpioPinPE10.h>
 #include <gpio/PE/GpioPinPE11.h>
 #include <gpio/PE/GpioPinPE12.h>
+#include <gpio/PE/GpioPinPE13.h>
+#include <gpio/PE/GpioPinPE14.h>
+#include <gpio/PE/GpioPinPE15.h>
 #include <gpio/PE/GpioPinPE3.h>
 #include <gpio/PE/GpioPinPE4.h>
 #include <gpio/PE/GpioPinPE5.h>
