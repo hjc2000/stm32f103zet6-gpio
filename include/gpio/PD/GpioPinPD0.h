@@ -6,7 +6,6 @@
 
 namespace bsp
 {
-	/// @brief PB5 引脚。
 	class GpioPinPD0
 		: public bsp::GpioPin
 	{
