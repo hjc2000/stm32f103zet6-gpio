@@ -9,12 +9,12 @@ GPIO_TypeDef *bsp::GpioPinPD15::Port()
 
 uint32_t bsp::GpioPinPD15::Pin()
 {
-	return GPIO_PIN_14;
+	return GPIO_PIN_15;
 }
 
 std::string bsp::GpioPinPD15::PinName() const
 {
-	return "PD14";
+	return "PD15";
 }
 
 void bsp::GpioPinPD15::Open(bsp::IGpioPinOptions const &options)
