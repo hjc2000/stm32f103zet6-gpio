@@ -25,6 +25,7 @@
 #pragma endregion
 
 #pragma region PE
+#include <gpio/PE/GpioPinPE0.h>
 #include <gpio/PE/GpioPinPE1.h>
 #include <gpio/PE/GpioPinPE10.h>
 #include <gpio/PE/GpioPinPE11.h>
