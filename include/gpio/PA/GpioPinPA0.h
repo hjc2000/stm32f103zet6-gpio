@@ -35,10 +35,7 @@ namespace bsp
 
 		/// @brief 引脚名称
 		/// @return
-		std::string PinName() const override
-		{
-			return "PA0";
-		}
+		std::string PinName() const override;
 
 		/// @brief 支持的复用功能。
 		/// @note 复用功能是非常复杂的，各个型号单片机都不一样，所以采用字符串。

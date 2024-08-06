@@ -1,23 +1,23 @@
-#include "GpioPinPA0.h"
+#include "GpioPinPA1.h"
 #include <gpio/GpioPinOptions.h>
 #include <hal.h>
 
-GPIO_TypeDef *bsp::GpioPinPA0::Port()
+GPIO_TypeDef *bsp::GpioPinPA1::Port()
 {
 	return GPIOA;
 }
 
-uint32_t bsp::GpioPinPA0::Pin()
+uint32_t bsp::GpioPinPA1::Pin()
 {
-	return GPIO_PIN_0;
+	return GPIO_PIN_1;
 }
 
-std::string bsp::GpioPinPA0::PinName() const
+std::string bsp::GpioPinPA1::PinName() const
 {
-	return "PA0";
+	return "PA1";
 }
 
-void bsp::GpioPinPA0::Open(bsp::IGpioPinOptions const &options)
+void bsp::GpioPinPA1::Open(bsp::IGpioPinOptions const &options)
 {
 	if (_is_open)
 	{
@@ -32,7 +32,7 @@ void bsp::GpioPinPA0::Open(bsp::IGpioPinOptions const &options)
 	HAL_GPIO_Init(Port(), &init);
 }
 
-void bsp::GpioPinPA0::Close()
+void bsp::GpioPinPA1::Close()
 {
 	if (!_is_open)
 	{

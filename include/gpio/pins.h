@@ -2,6 +2,7 @@
 
 #pragma region PA
 #include <gpio/PA/GpioPinPA0.h>
+#include <gpio/PA/GpioPinPA1.h>
 #include <gpio/PA/GpioPinPA10.h>
 #include <gpio/PA/GpioPinPA9.h>
 #pragma endregion

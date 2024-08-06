@@ -12,6 +12,11 @@ uint32_t bsp::GpioPinPA9::Pin()
 	return GPIO_PIN_9;
 }
 
+std::string bsp::GpioPinPA9::PinName() const
+{
+	return "PA9";
+}
+
 void bsp::GpioPinPA9::Open(bsp::IGpioPinOptions const &options)
 {
 	if (_is_open)
