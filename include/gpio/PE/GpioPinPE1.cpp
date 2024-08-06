@@ -1,23 +1,23 @@
-#include "GpioPinPE3.h"
+#include "GpioPinPE1.h"
 #include <gpio/GpioPinOptions.h>
 #include <hal.h>
 
-GPIO_TypeDef *bsp::GpioPinPE3::Port()
+GPIO_TypeDef *bsp::GpioPinPE1::Port()
 {
 	return GPIOE;
 }
 
-uint32_t bsp::GpioPinPE3::Pin()
+uint32_t bsp::GpioPinPE1::Pin()
 {
-	return GPIO_PIN_3;
+	return GPIO_PIN_1;
 }
 
-std::string bsp::GpioPinPE3::PinName() const
+std::string bsp::GpioPinPE1::PinName() const
 {
-	return "PE3";
+	return "PE1";
 }
 
-void bsp::GpioPinPE3::Open(bsp::IGpioPinOptions const &options)
+void bsp::GpioPinPE1::Open(bsp::IGpioPinOptions const &options)
 {
 	if (_is_open)
 	{
@@ -32,7 +32,7 @@ void bsp::GpioPinPE3::Open(bsp::IGpioPinOptions const &options)
 	HAL_GPIO_Init(Port(), &init);
 }
 
-void bsp::GpioPinPE3::Close()
+void bsp::GpioPinPE1::Close()
 {
 	if (!_is_open)
 	{

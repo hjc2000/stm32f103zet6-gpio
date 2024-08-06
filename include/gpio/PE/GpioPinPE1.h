@@ -6,11 +6,11 @@
 
 namespace bsp
 {
-	class GpioPinPE3
+	class GpioPinPE1
 		: public bsp::GpioPin
 	{
 	private:
-		GpioPinPE3() = default;
+		GpioPinPE1() = default;
 
 		bool _is_open = false;
 
@@ -21,9 +21,9 @@ namespace bsp
 			};
 
 	public:
-		static GpioPinPE3 &Instance()
+		static GpioPinPE1 &Instance()
 		{
-			static GpioPinPE3 o;
+			static GpioPinPE1 o;
 			return o;
 		}
 
