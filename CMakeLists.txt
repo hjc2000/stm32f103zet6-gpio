@@ -4,7 +4,7 @@ include(target_import_base)
 include(target_import_bsp_interface)
 include(target_import_stm32f103zet6_hal)
 
-set(ProjectName stm32f103-gpio)
+set(ProjectName stm32f103zet6-gpio)
 project(${ProjectName})
 enable_language(ASM)
 set(CMAKE_CXX_STANDARD 20)
