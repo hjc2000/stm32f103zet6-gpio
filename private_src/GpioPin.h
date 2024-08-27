@@ -1,5 +1,6 @@
 #pragma once
-#include <bsp-interface/di.h>
+#include <bsp-interface/di/gpio.h>
+#include <bsp-interface/di/interrupt.h>
 #include <hal.h>
 
 namespace bsp

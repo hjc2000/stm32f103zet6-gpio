@@ -1,4 +1,4 @@
-#include <bsp-interface/di.h>
+#include <bsp-interface/di/gpio.h>
 #include <GpioPinOptions.h>
 
 std::shared_ptr<bsp::IGpioPinOptions> DICreate_GpioPinOptions()
