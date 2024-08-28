@@ -1,4 +1,4 @@
-#include <base/container/StdMapValuesEnumerable.h>
+#include <base/container/Collection.h>
 #include <base/Initializer.h>
 #include <GpioPinOptions.h>
 #include <pins.h>
@@ -9,19 +9,10 @@ static base::Initializer _initializer{
         DI_GpioPinCollection();
     }};
 
-class Collection final :
-    public base::IReadOnlyDictionary<std::string, bsp::IGpioPin *>
+class Initializer
 {
-private:
-    std::map<std::string, bsp::IGpioPin *> _pin_map{};
-
-    void AddPin(bsp::IGpioPin &pin)
-    {
-        _pin_map[pin.PinName()] = &pin;
-    }
-
 public:
-    Collection()
+    Initializer()
     {
 #pragma region PA
         AddPin(bsp::GpioPinPA0::Instance());
@@ -68,38 +59,16 @@ public:
 #pragma endregion
     }
 
-#pragma region IReadOnlyCollection
-
-    int Count() const override
+    void AddPin(bsp::IGpioPin &pin)
     {
-        return _pin_map.size();
+        _collection.Put(pin.PinName(), &pin);
     }
 
-    bsp::IGpioPin *Get(std::string key) const override
-    {
-        auto it = _pin_map.find(key);
-        if (it == _pin_map.end())
-        {
-            return nullptr;
-        }
-
-        return it->second;
-    }
-
-    std::shared_ptr<base::IEnumerator<bsp::IGpioPin *>> GetEnumerator() override
-    {
-        return std::shared_ptr<base::IEnumerator<bsp::IGpioPin *>>{
-            new base::StdMapValuesEnumerator<std::string, bsp::IGpioPin *>{
-                &_pin_map,
-            },
-        };
-    }
-
-#pragma endregion
+    base::Collection<std::string, bsp::IGpioPin *> _collection{};
 };
 
-base::IReadOnlyDictionary<std::string, bsp::IGpioPin *> &DI_GpioPinCollection()
+base::ICollection<std::string, bsp::IGpioPin *> &DI_GpioPinCollection()
 {
-    static Collection o;
-    return o;
+    static Initializer o;
+    return o._collection;
 }
