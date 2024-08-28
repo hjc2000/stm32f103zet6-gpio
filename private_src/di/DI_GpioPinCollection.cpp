@@ -67,7 +67,7 @@ public:
     base::Collection<std::string, bsp::IGpioPin *> _collection{};
 };
 
-base::ICollection<std::string, bsp::IGpioPin *> &DI_GpioPinCollection()
+base::ICollection<std::string, bsp::IGpioPin *> const &DI_GpioPinCollection()
 {
     static Initializer o;
     return o._collection;
