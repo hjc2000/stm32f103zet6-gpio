@@ -10,7 +10,7 @@ static base::Initializer _initializer{
     }};
 
 class Collection final :
-    public base::IReadOnlyCollection<std::string, bsp::IGpioPin *>
+    public base::IReadOnlyDictionary<std::string, bsp::IGpioPin *>
 {
 private:
     std::map<std::string, bsp::IGpioPin *> _pin_map{};
@@ -98,7 +98,7 @@ public:
 #pragma endregion
 };
 
-base::IReadOnlyCollection<std::string, bsp::IGpioPin *> &DI_GpioPinCollection()
+base::IReadOnlyDictionary<std::string, bsp::IGpioPin *> &DI_GpioPinCollection()
 {
     static Collection o;
     return o;
