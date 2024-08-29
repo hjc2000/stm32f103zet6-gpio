@@ -1,17 +1,12 @@
 #include <base/container/Collection.h>
-#include <base/Initializer.h>
+#include <base/SingletonGetter.h>
+#include <bsp-interface/di/interrupt.h>
 #include <GpioPinOptions.h>
 #include <pins.h>
 
-static base::Initializer _initializer{
-    []()
-    {
-        DI_GpioPinCollection();
-    }};
-
 class Initializer
 {
-public:
+private:
     Initializer()
     {
 #pragma region PA
@@ -64,11 +59,36 @@ public:
         _collection.Put(pin.PinName(), &pin);
     }
 
+public:
+    static Initializer &Instance()
+    {
+        class Getter : public base::SingletonGetter<Initializer>
+        {
+        public:
+            std::unique_ptr<Initializer> Create() override
+            {
+                return std::unique_ptr<Initializer>{new Initializer{}};
+            }
+
+            void Lock() override
+            {
+                DI_InterruptSwitch().DisableGlobalInterrupt();
+            }
+
+            void Unlock() override
+            {
+                DI_InterruptSwitch().EnableGlobalInterrupt();
+            }
+        };
+
+        Getter g;
+        return g.Instance();
+    }
+
     base::Collection<std::string, bsp::IGpioPin *> _collection{};
 };
 
 base::ICollection<std::string, bsp::IGpioPin *> const &DI_GpioPinCollection()
 {
-    static Initializer o;
-    return o._collection;
+    return Initializer::Instance()._collection;
 }
