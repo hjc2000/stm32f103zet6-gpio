@@ -1,4 +1,4 @@
-#include <base/container/Collection.h>
+#include <base/container/Dictionary.h>
 #include <base/di/SingletonGetter.h>
 #include <bsp-interface/di/interrupt.h>
 #include <GpioPinOptions.h>
@@ -56,7 +56,7 @@ private:
 
     void AddPin(bsp::IGpioPin &pin)
     {
-        _collection.Put(pin.PinName(), &pin);
+        _dic.Add(pin.PinName(), &pin);
     }
 
 public:
@@ -85,10 +85,10 @@ public:
         return g.Instance();
     }
 
-    base::Collection<std::string, bsp::IGpioPin *> _collection{};
+    base::Dictionary<std::string, bsp::IGpioPin *> _dic{};
 };
 
-base::ICollection<std::string, bsp::IGpioPin *> const &DI_GpioPinCollection()
+base::IDictionary<std::string, bsp::IGpioPin *> const &DI_GpioPinCollection()
 {
-    return Initializer::Instance()._collection;
+    return Initializer::Instance()._dic;
 }
