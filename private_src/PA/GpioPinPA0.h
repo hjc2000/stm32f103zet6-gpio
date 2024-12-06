@@ -12,8 +12,6 @@ namespace bsp
     private:
         GpioPinPA0() = default;
 
-        bool _is_open = false;
-
         base::Array<std::string, 1> _supported_alternate_functions{
             "af_push_pull",
         };
@@ -41,15 +39,5 @@ namespace bsp
         {
             return _supported_alternate_functions;
         }
-
-        /// @brief 指示此引脚是否已经打开。
-        /// @return
-        bool IsOpen() override
-        {
-            return _is_open;
-        }
-
-        void Open(bsp::IGpioPinOptions const &options) override;
-        void Close() override;
     };
 } // namespace bsp
