@@ -10,7 +10,6 @@ namespace bsp
     private:
         GpioPinPE15() = default;
 
-        bool _is_open = false;
         base::Array<std::string, 1> _supported_alternate_functions{"gpio"};
 
     public:
