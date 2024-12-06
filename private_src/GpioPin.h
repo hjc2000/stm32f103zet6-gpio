@@ -34,6 +34,14 @@ namespace bsp
         /// @param driver_mode 驱动模式。
         virtual void OpenAsOutputMode(bsp::IGpioPinPullMode pull_mode, bsp::IGpioPinDriver driver_mode) override;
 
+        /// @brief 将引脚打开为复用功能。
+        /// @param function_name 复用功能名称。
+        /// @param pull_mode 拉模式。
+        /// @param driver_mode 驱动模式。
+        virtual void OpenAsAlternateFunctionMode(std::string function_name,
+                                                 bsp::IGpioPinPullMode pull_mode,
+                                                 bsp::IGpioPinDriver driver_mode);
+
         void Close() override;
 
         /// @brief 使能时钟

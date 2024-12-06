@@ -103,6 +103,55 @@ void bsp::GpioPin::OpenAsOutputMode(bsp::IGpioPinPullMode pull_mode, bsp::IGpioP
     _is_open = true;
 }
 
+void bsp::GpioPin::OpenAsAlternateFunctionMode(std::string function_name,
+                                               bsp::IGpioPinPullMode pull_mode,
+                                               bsp::IGpioPinDriver driver_mode)
+{
+    EnableClock();
+    GPIO_InitTypeDef def{};
+    if (function_name == "af_push_pull")
+    {
+        def.Mode = GPIO_MODE_AF_PP;
+    }
+    else if (function_name == "af_open_drain")
+    {
+        def.Mode = GPIO_MODE_AF_OD;
+    }
+    else if (function_name == "af_input")
+    {
+        def.Mode = GPIO_MODE_AF_INPUT;
+    }
+    else
+    {
+        throw std::invalid_argument{"不支持的复用功能"};
+    }
+
+    switch (pull_mode)
+    {
+    default:
+    case bsp::IGpioPinPullMode::NoPull:
+        {
+            def.Pull = GPIO_NOPULL;
+            break;
+        }
+    case bsp::IGpioPinPullMode::PullUp:
+        {
+            def.Pull = GPIO_PULLUP;
+            break;
+        }
+    case bsp::IGpioPinPullMode::PullDown:
+        {
+            def.Pull = GPIO_PULLDOWN;
+            break;
+        }
+    }
+
+    def.Speed = GPIO_SPEED_FREQ_HIGH;
+    def.Pin = Pin();
+    HAL_GPIO_Init(Port(), &def);
+    _is_open = true;
+}
+
 void bsp::GpioPin::Close()
 {
     if (!_is_open)
